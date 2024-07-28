@@ -3,6 +3,7 @@
 namespace Obelaw\Twist;
 
 use Illuminate\Support\ServiceProvider;
+use Obelaw\Twist\Classes\TwistClass;
 
 class TwistServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,7 @@ class TwistServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton('obelaw.twist.twist-class', TwistClass::class);
     }
 
     /**
