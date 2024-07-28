@@ -13,5 +13,16 @@
             "email": "komicho1996@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "laravel/framework": "^11.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Obelaw\\Twist\\TwistServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
