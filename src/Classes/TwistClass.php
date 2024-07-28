@@ -9,6 +9,11 @@ class TwistClass
     private string $prefixTable = 'obelaw_';
     private array $modules = [];
 
+    public function make(): static
+    {
+        return $this;
+    }
+
     /**
      * Get the value of path
      */
@@ -95,7 +100,7 @@ class TwistClass
 
     /**
      * Get the value of prefixTable
-     */ 
+     */
     public function getPrefixTable()
     {
         return $this->prefixTable;
@@ -105,7 +110,7 @@ class TwistClass
      * Set the value of prefixTable
      *
      * @return  self
-     */ 
+     */
     public function setPrefixTable($prefixTable)
     {
         $this->prefixTable = $prefixTable;
