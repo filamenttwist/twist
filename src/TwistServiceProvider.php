@@ -4,6 +4,7 @@ namespace Obelaw\Twist;
 
 use Illuminate\Support\ServiceProvider;
 use Obelaw\Twist\Classes\TwistClass;
+use Obelaw\Twist\Console\MigrateCommand;
 
 class TwistServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,8 @@ class TwistServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->commands([
+            MigrateCommand::class,
+        ]);
     }
 }
