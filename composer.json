@@ -15,7 +15,8 @@
     ],
     "require": {
         "laravel/framework": "^11.0",
-        "filament/filament": "^3.2"
+        "filament/filament": "^3.2",
+        "obelaw/permit": "*"
     },
     "extra": {
         "laravel": {
