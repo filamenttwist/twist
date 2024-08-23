@@ -36,7 +36,7 @@ class TwistPanelProvider extends PanelProvider
         $this->twist = $twist;
 
         Filament::registerPanel(
-            fn (): Panel => $this->panel(Panel::make()),
+            fn(): Panel => $this->panel(Panel::make()),
         );
     }
 
@@ -47,6 +47,7 @@ class TwistPanelProvider extends PanelProvider
         return $panel
             ->id('erp-o')
             ->path($this->twist->getPath())
+            ->brandLogo(fn() => view('obelaw-twist::layout.logo'))
             ->colors([
                 'primary' => '#fc4706',
             ])

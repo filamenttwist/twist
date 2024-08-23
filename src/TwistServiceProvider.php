@@ -25,6 +25,8 @@ class TwistServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->loadViewsFrom(__DIR__ . '/../resources', 'obelaw-twist');
+
         $this->commands([
             MigrateCommand::class,
         ]);
