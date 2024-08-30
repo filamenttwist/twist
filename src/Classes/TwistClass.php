@@ -2,12 +2,14 @@
 
 namespace Obelaw\Twist\Classes;
 
+use Obelaw\Twist\Base\BaseAddon;
+
 class TwistClass
 {
     private $panel = null;
     private string $path = 'erp-o';
     private string $prefixTable = 'obelaw_';
-    private array $modules = [];
+    private array $addons = [];
 
     public function make(): static
     {
@@ -35,11 +37,11 @@ class TwistClass
     }
 
     /**
-     * Get the value of modules
+     * Get the value of addons
      */
-    public function getModules()
+    public function getAddons()
     {
-        return $this->modules;
+        return $this->addons;
     }
 
     /**
@@ -47,33 +49,35 @@ class TwistClass
      *
      * @return  self
      */
-    public function resetModules()
+    public function appendAddons(array $addons)
     {
-        $this->modules = [];
+        foreach ($addons as $addon) {
+            $this->appendAddon($addon);
+        }
 
         return $this;
     }
 
     /**
-     * Set the value of modules
+     * Set the value of addon
      *
      * @return  self
      */
-    public function setModules($modules)
+    public function appendAddon(BaseAddon $addon)
     {
-        $this->modules = $modules;
+        array_push($this->addons, $addon);
 
         return $this;
     }
 
     /**
-     * Set the value of module
+     * Set the value of addons
      *
      * @return  self
      */
-    public function appendModule($module)
+    public function resetAddons()
     {
-        array_push($this->modules, $module);
+        $this->addons = [];
 
         return $this;
     }

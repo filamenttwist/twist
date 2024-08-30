@@ -16,7 +16,7 @@ final class MigrateCommand extends Command
     public function handle(): void
     {
         $migratePaths = [];
-        foreach (Twist::getModules() as $module) {
+        foreach (Twist::getAddons() as $module) {
             if (method_exists($module, 'pathMigrations')) {
                 array_push($migratePaths, $module->pathMigrations());
             }

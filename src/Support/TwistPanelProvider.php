@@ -51,7 +51,7 @@ class TwistPanelProvider extends PanelProvider
             ->colors([
                 'primary' => '#fc4706',
             ])
-            ->plugins($this->twist->getModules())
+            ->plugins($this->twist->getAddons())
             ->plugin(PermitPlugin::make())
             ->middleware([
                 EncryptCookies::class,
