@@ -7,7 +7,8 @@ use Obelaw\Twist\Base\BaseAddon;
 class TwistClass
 {
     private $panel = null;
-    private string $path = 'erp-o';
+    private string $path = 'obelaw';
+    private string|null $connection = null;
     private string $prefixTable = 'obelaw_';
     private array $addons = [];
 
@@ -98,6 +99,26 @@ class TwistClass
     public function setPanel($panel)
     {
         $this->panel = $panel;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of connection
+     */
+    public function getConnection()
+    {
+        return $this->connection;
+    }
+
+    /**
+     * Set the value of connection
+     *
+     * @return  self
+     */
+    public function setConnection($connection)
+    {
+        $this->connection = $connection;
 
         return $this;
     }
