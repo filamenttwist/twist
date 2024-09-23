@@ -45,7 +45,9 @@ class TwistPanelProvider extends PanelProvider
         $this->twist->setPanel($panel);
 
         return $panel
-            ->id('erp-o')
+            ->id('obelaw-twist')
+            ->sidebarCollapsibleOnDesktop()
+            ->domain($this->twist->getDomain())
             ->path($this->twist->getPath())
             ->brandLogo(fn() => view('obelaw-twist::layout.logo'))
             ->colors([

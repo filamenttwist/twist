@@ -7,6 +7,7 @@ use Obelaw\Twist\Base\BaseAddon;
 class TwistClass
 {
     private $panel = null;
+    private string|null $domain = null;
     private string $path = 'obelaw';
     private string|null $connection = null;
     private string $prefixTable = 'obelaw_';
@@ -89,6 +90,26 @@ class TwistClass
     public function getPanel()
     {
         return $this->panel;
+    }
+
+    /**
+     * Get the value of domain
+     */
+    public function getDomain()
+    {
+        return $this->domain;
+    }
+
+    /**
+     * Set the value of domain
+     *
+     * @return  self
+     */
+    public function setDomain($domain)
+    {
+        $this->domain = $domain;
+
+        return $this;
     }
 
     /**
