@@ -7,13 +7,6 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Enums\MaxWidth;
-use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
-use Illuminate\Cookie\Middleware\EncryptCookies;
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
-use Illuminate\Routing\Middleware\SubstituteBindings;
-use Illuminate\Session\Middleware\AuthenticateSession;
-use Illuminate\Session\Middleware\StartSession;
-use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Obelaw\Permit\PermitPlugin;
 use Obelaw\Twist\Classes\TwistClass;
 use Obelaw\Twist\Facades\Twist;
@@ -55,15 +48,7 @@ class TwistPanelProvider extends PanelProvider
             ])
             ->plugins($this->twist->getAddons())
             ->plugin(PermitPlugin::make())
-            ->middleware([
-                EncryptCookies::class,
-                AddQueuedCookiesToResponse::class,
-                StartSession::class,
-                AuthenticateSession::class,
-                ShareErrorsFromSession::class,
-                VerifyCsrfToken::class,
-                SubstituteBindings::class,
-            ])
+            ->middleware($this->twist->getMiddlewares())
             ->authMiddleware([
                 Authenticate::class,
             ])

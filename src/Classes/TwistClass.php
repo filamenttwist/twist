@@ -2,6 +2,13 @@
 
 namespace Obelaw\Twist\Classes;
 
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Illuminate\Cookie\Middleware\EncryptCookies;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Routing\Middleware\SubstituteBindings;
+use Illuminate\Session\Middleware\AuthenticateSession;
+use Illuminate\Session\Middleware\StartSession;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Obelaw\Twist\Base\BaseAddon;
 
 class TwistClass
@@ -11,6 +18,15 @@ class TwistClass
     private string $path = 'obelaw';
     private string|null $connection = null;
     private string $prefixTable = 'obelaw_';
+    private array $middlewares = [
+        EncryptCookies::class,
+        AddQueuedCookiesToResponse::class,
+        StartSession::class,
+        AuthenticateSession::class,
+        ShareErrorsFromSession::class,
+        VerifyCsrfToken::class,
+        SubstituteBindings::class,
+    ];
     private array $addons = [];
 
     public function make(): static
@@ -34,6 +50,26 @@ class TwistClass
     public function setPath($path)
     {
         $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of middlewares
+     */
+    public function getMiddlewares()
+    {
+        return $this->middlewares;
+    }
+
+    /**
+     * Set the value of middlewares
+     *
+     * @return  self
+     */
+    public function setMiddleware($middleware): static
+    {
+        array_push($this->middlewares, $middleware);
 
         return $this;
     }
