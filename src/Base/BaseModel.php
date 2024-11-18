@@ -8,6 +8,13 @@ use Obelaw\Twist\Facades\Twist;
 abstract class BaseModel extends Model
 {
     /**
+     * Table postfix.
+     *
+     * @var string $postfix
+     */
+    protected string $postfix = '';
+
+    /**
      * Create a new instance of the Model.
      *
      * @param array $attributes
@@ -20,6 +27,6 @@ abstract class BaseModel extends Model
             $this->setConnection($connection);
         }
 
-        $this->setTable(config('obelaw.database.table_prefix', Twist::getPrefixTable()) . $this->getTable());
+        $this->setTable(config('obelaw.database.table_prefix', Twist::getPrefixTable()) . $this->postfix . $this->getTable());
     }
 }

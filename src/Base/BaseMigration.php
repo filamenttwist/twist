@@ -15,10 +15,17 @@ abstract class BaseMigration extends Migration
     protected string $prefix = '';
 
     /**
+     * Table postfix.
+     *
+     * @var string $postfix
+     */
+    protected string $postfix = '';
+
+    /**
      * Create a new instance of the migration.
      */
     public function __construct()
     {
-        $this->prefix = config('obelaw.database.table_prefix', Twist::getPrefixTable());
+        $this->prefix = config('obelaw.database.table_prefix', Twist::getPrefixTable()) . $this->postfix;
     }
 }
