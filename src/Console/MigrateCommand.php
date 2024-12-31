@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Obelaw\Twist\Console;
 
 use Illuminate\Console\Command;
+use Obelaw\Twist\Contracts\HasMigration;
 use Obelaw\Twist\Facades\Twist;
 
 final class MigrateCommand extends Command
@@ -17,21 +18,23 @@ final class MigrateCommand extends Command
     {
         $migratePaths = [];
         foreach (Twist::getAddons() as $module) {
-            if (method_exists($module, 'pathMigrations')) {
+            if ($module instanceof HasMigration) {
                 array_push($migratePaths, $module->pathMigrations());
             }
         }
 
+        $migrator = $this->laravel->make('migrator');
+
         if ($this->option('rollback')) {
-            $this->call('migrate:rollback', [
-                '--path' => $migratePaths,
-            ]);
+            $migrator->rollback($migratePaths);
+
+            $this->info('Migrations rollback completed successfully.');
 
             return;
         }
 
-        $this->call('migrate', [
-            '--path' => $migratePaths,
-        ]);
+        $migrator->run($migratePaths);
+
+        $this->info('Migrations completed successfully.');
     }
 }
