@@ -5,6 +5,7 @@ namespace Obelaw\Twist;
 use Illuminate\Support\ServiceProvider;
 use Obelaw\Twist\Classes\TwistClass;
 use Obelaw\Twist\Console\MigrateCommand;
+use Obelaw\Twist\Console\SetupCommand;
 
 class TwistServiceProvider extends ServiceProvider
 {
@@ -27,7 +28,12 @@ class TwistServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__ . '/../resources', 'obelaw-twist');
 
+        if ($this->app->runningInConsole()) {
+            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        }
+
         $this->commands([
+            SetupCommand::class,
             MigrateCommand::class,
         ]);
     }
