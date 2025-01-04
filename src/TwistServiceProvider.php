@@ -8,6 +8,7 @@ use Obelaw\Twist\Console\MigrateCommand;
 use Obelaw\Twist\Console\SetupAddonCommand;
 use Obelaw\Twist\Console\SetupCommand;
 use Obelaw\Twist\Console\SetupDisableCommand;
+use Obelaw\Twist\Console\SetupEnableCommand;
 
 class TwistServiceProvider extends ServiceProvider
 {
@@ -37,6 +38,7 @@ class TwistServiceProvider extends ServiceProvider
         $this->commands([
             SetupCommand::class,
             SetupAddonCommand::class,
+            SetupEnableCommand::class,
             SetupDisableCommand::class,
             MigrateCommand::class,
         ]);
