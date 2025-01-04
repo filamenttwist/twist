@@ -21,6 +21,10 @@ final class SetupDisableCommand extends Command
             $addon->update([
                 'is_active' => false,
             ]);
+
+            $this->info('Addon disabled');
+        } else {
+            $this->error('Addon not found');
         }
     }
 }
