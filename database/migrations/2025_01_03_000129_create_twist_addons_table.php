@@ -14,6 +14,7 @@ return new class extends BaseMigration
         Schema::create($this->prefix . 'twist_addons', function (Blueprint $table) {
             $table->string('id')->index()->unique();
             $table->string('pointer');
+            $table->json('panels')->nullable();
             $table->boolean('is_active')->default(true);
         });
     }

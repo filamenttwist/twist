@@ -36,7 +36,17 @@ class Addon extends BaseModel
     protected $fillable = [
         'id',
         'pointer',
+        'panels',
         'is_active',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'panels' => 'json',
     ];
 
     /**

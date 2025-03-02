@@ -20,12 +20,14 @@ final class SetupCommand extends Command
         if (AddonsPool::hasPools()) {
             AddonsPool::scan();
 
-            foreach (AddonRegistrar::getPaths() as $id => $pointer) {
+            foreach (AddonRegistrar::getPaths() as $id => $addon) {
+                // dump($addon);
                 Addon::updateOrCreate([
                     'id' => $id,
                 ], [
                     'id' => $id,
-                    'pointer' => $pointer,
+                    'pointer' => $addon['path'],
+                    'panels' => $addon['panels'],
                 ]);
             }
 

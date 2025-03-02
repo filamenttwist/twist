@@ -34,14 +34,6 @@ class TwistClass
 
     public function make(): static
     {
-        $tableAddons = (new Addon)->getTable();
-
-        if (Schema::hasTable($tableAddons)) {
-            $this->addons = array_map(function ($pointer) {
-                return (new $pointer)->make();
-            }, DB::table($tableAddons)->where('is_active', true)->pluck('pointer')->toArray());
-        }
-
         return $this;
     }
 
@@ -83,6 +75,17 @@ class TwistClass
         array_push($this->middlewares, $middleware);
 
         return $this;
+    }
+
+    public function loadSetupAddons()
+    {
+        $tableAddons = (new Addon)->getTable();
+
+        if (Schema::hasTable($tableAddons)) {
+            $this->addons = array_map(function ($pointer) {
+                return (new $pointer)->make();
+            }, DB::table($tableAddons)->whereJsonContains('panels', $this->getPath())->where('is_active', true)->pluck('pointer')->toArray());
+        }
     }
 
     /**
@@ -137,6 +140,11 @@ class TwistClass
     public function getPanel()
     {
         return $this->panel;
+    }
+
+    public function defaultPanel()
+    {
+        return 'obelaw';
     }
 
     /**
