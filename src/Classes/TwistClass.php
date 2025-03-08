@@ -8,8 +8,11 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Obelaw\Twist\Base\BaseAddon;
+use Obelaw\Twist\Models\Addon;
 
 class TwistClass
 {
@@ -74,6 +77,17 @@ class TwistClass
         return $this;
     }
 
+    public function loadSetupAddons()
+    {
+        $tableAddons = (new Addon)->getTable();
+
+        if (Schema::hasTable($tableAddons)) {
+            $this->addons = array_map(function ($pointer) {
+                return (new $pointer)->make();
+            }, DB::table($tableAddons)->whereJsonContains('panels', $this->getPath())->where('is_active', true)->pluck('pointer')->toArray());
+        }
+    }
+
     /**
      * Get the value of addons
      */
@@ -126,6 +140,11 @@ class TwistClass
     public function getPanel()
     {
         return $this->panel;
+    }
+
+    public function defaultPanel()
+    {
+        return 'obelaw';
     }
 
     /**

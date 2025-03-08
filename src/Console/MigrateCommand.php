@@ -26,15 +26,26 @@ final class MigrateCommand extends Command
         $migrator = $this->laravel->make('migrator');
 
         if ($this->option('rollback')) {
-            $migrator->rollback($migratePaths);
+            $migrateFiles = $migrator->rollback($migratePaths);
+
+            $this->showFiles($migrateFiles);
 
             $this->info('Migrations rollback completed successfully.');
 
             return;
         }
 
-        $migrator->run($migratePaths);
+        $migrateFiles = $migrator->run($migratePaths);
+
+        $this->showFiles($migrateFiles);
 
         $this->info('Migrations completed successfully.');
+    }
+
+    private function showFiles($files)
+    {
+        foreach ($files as $file) {
+            $this->line(basename($file));
+        }
     }
 }
