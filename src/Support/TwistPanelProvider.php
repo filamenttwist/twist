@@ -48,9 +48,9 @@ class TwistPanelProvider extends PanelProvider
             ->sidebarCollapsibleOnDesktop()
             ->domain($this->twist->getDomain())
             ->path($this->twist->getPath())
-            ->brandLogo(fn() => view('obelaw-twist::layout.logo'))
+            ->brandLogo($this->twist->getLogo())
             ->colors([
-                'primary' => '#fc4706',
+                'primary' => $this->twist->getColor(),
             ])
             ->plugins($this->twist->getAddons())
             ->plugin(PermitPlugin::make())

@@ -2,6 +2,7 @@
 
 namespace Obelaw\Twist\Classes;
 
+use Filament\Clusters\Cluster;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -19,6 +20,8 @@ class TwistClass
     private $panel = null;
     private string|null $domain = null;
     private string $path = 'obelaw';
+    private string $color = '#FC4706';
+    private mixed $logo = null;
     private string|null $connection = null;
     private string $prefixTable = 'obelaw_';
     private array $middlewares = [
@@ -53,6 +56,46 @@ class TwistClass
     public function setPath($path)
     {
         $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of color
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Set the value of color
+     *
+     * @return  self
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of logo
+     */
+    public function getLogo()
+    {
+        return $this->logo ?? fn() => view('obelaw-twist::layout.logo');
+    }
+
+    /**
+     * Set the value of logo
+     *
+     * @return  self
+     */
+    public function setLogo($logo)
+    {
+        $this->logo = $logo;
 
         return $this;
     }
