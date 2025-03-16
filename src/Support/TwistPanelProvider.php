@@ -22,7 +22,7 @@ class TwistPanelProvider extends PanelProvider
 
     public function register(): void
     {
-        $twist = Twist::make();
+        $twist = new TwistClass;
 
         $this->twist($twist);
 
@@ -36,10 +36,15 @@ class TwistPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         $this->twist->setPanel($panel);
-        $this->twist->loadSetupAddons();
+
+        try {
+            $this->twist->loadSetupAddons($this->twist->getPath());
+        } catch (\Exception $e) {
+            //
+        }
 
         return $panel
-            ->id('obelaw-twist')
+            ->id('obelaw-twist-' . $this->twist->getPath())
             ->sidebarCollapsibleOnDesktop()
             ->domain($this->twist->getDomain())
             ->path($this->twist->getPath())

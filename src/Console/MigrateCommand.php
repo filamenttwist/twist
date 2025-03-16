@@ -16,7 +16,12 @@ final class MigrateCommand extends Command
 
     public function handle(): void
     {
+        array_map(function ($panel) {
+            Twist::loadSetupAddons($panel);
+        }, config('twist.panels'));
+
         $migratePaths = [];
+
         foreach (Twist::getAddons() as $module) {
             if ($module instanceof HasMigration) {
                 array_push($migratePaths, $module->pathMigrations());

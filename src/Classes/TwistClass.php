@@ -77,15 +77,17 @@ class TwistClass
         return $this;
     }
 
-    public function loadSetupAddons()
+    public function loadSetupAddons(string $panel): void
     {
         $tableAddons = (new Addon)->getTable();
 
         if (Schema::hasTable($tableAddons)) {
-            $this->addons = array_map(function ($pointer) {
+            $addons = array_map(function ($pointer) {
                 return (new $pointer)->make();
-            }, DB::table($tableAddons)->whereJsonContains('panels', $this->getPath())->where('is_active', true)->pluck('pointer')->toArray());
+            }, DB::table($tableAddons)->whereJsonContains('panels', $panel)->where('is_active', true)->pluck('pointer')->toArray());
         }
+
+        $this->addons = array_merge($this->addons, $addons);
     }
 
     /**

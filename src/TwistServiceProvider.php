@@ -19,6 +19,11 @@ class TwistServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/twist.php',
+            'twist'
+        );
+
         $this->app->singleton('obelaw.twist.twist-class', TwistClass::class);
     }
 
@@ -33,6 +38,10 @@ class TwistServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+            $this->publishes([
+                __DIR__ . '/../config/twist.php' => config_path('twist.php'),
+            ], 'twist');
         }
 
         $this->commands([
