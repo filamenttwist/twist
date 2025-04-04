@@ -7,7 +7,6 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Enums\MaxWidth;
-use Obelaw\Permit\PermitPlugin;
 use Obelaw\Twist\Classes\TwistClass;
 use Obelaw\Twist\Facades\Twist;
 
@@ -53,7 +52,6 @@ class TwistPanelProvider extends PanelProvider
                 'primary' => $this->twist->getColor(),
             ])
             ->plugins($this->twist->getAddons())
-            ->plugin(PermitPlugin::make())
             ->middleware($this->twist->getMiddlewares())
             ->authMiddleware([
                 Authenticate::class,
