@@ -33,6 +33,7 @@ class TwistClass
         VerifyCsrfToken::class,
         SubstituteBindings::class,
     ];
+    private bool $disloadSetupAddons = false;
     private array $addons = [];
 
     public function make(): static
@@ -120,7 +121,7 @@ class TwistClass
         return $this;
     }
 
-    public function loadSetupAddons(string $panel): void
+    public function loadSetupAddons(string $panel): array
     {
         $tableAddons = (new Addon)->getTable();
 
@@ -131,6 +132,8 @@ class TwistClass
         }
 
         $this->addons = array_merge($this->addons, $addons);
+
+        return $this->addons;
     }
 
     /**
@@ -260,6 +263,26 @@ class TwistClass
     public function setPrefixTable($prefixTable)
     {
         $this->prefixTable = $prefixTable;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of disloadSetupAddons
+     */
+    public function getDisloadSetupAddons()
+    {
+        return $this->disloadSetupAddons;
+    }
+
+    /**
+     * Set the value of disloadSetupAddons
+     *
+     * @return  self
+     */
+    public function disloadSetupAddons()
+    {
+        $this->disloadSetupAddons = true;
 
         return $this;
     }
