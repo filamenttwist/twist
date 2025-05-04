@@ -35,6 +35,7 @@ class TwistClass
     ];
     private bool $disloadSetupAddons = false;
     private array $addons = [];
+    private array $availableAddons = [];
 
     public function make(): static
     {
@@ -180,6 +181,23 @@ class TwistClass
         $this->addons = [];
 
         return $this;
+    }
+
+    /**
+     * Check if the addon is available
+     * 
+     * @param mixed $id
+     * @return bool
+     */
+    public function hasAddon($id): bool
+    {
+        $tableAddons = (new Addon)->getTable();
+
+        if (Schema::hasTable($tableAddons) && empty($this->availableAddons)) {
+            $this->availableAddons = DB::table($tableAddons)->where('is_active', true)->pluck('id')->toArray();
+        }
+
+        return in_array($id, $this->availableAddons);
     }
 
     /**
