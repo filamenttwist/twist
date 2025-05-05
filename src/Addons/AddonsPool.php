@@ -15,6 +15,13 @@ class AddonsPool
     private static $poolPaths = [];
 
     /**
+     * Twist paths
+     * 
+     * @var array
+     */
+    private static $twistPaths = [];
+
+    /**
      * Set new pool path
      *
      * @param string $path
@@ -36,6 +43,11 @@ class AddonsPool
         return (count(static::$poolPaths) != 0) ? true : false;
     }
 
+    public static function loadTwist($twistPath)
+    {
+        array_push(static::$twistPaths, $twistPath);
+    }
+
     /**
      * Scan the pool paths
      */
@@ -44,6 +56,12 @@ class AddonsPool
         foreach (static::$poolPaths as $scan) {
             foreach (glob($scan['path'] . $scan['level']) as $obelaw) {
                 require $obelaw;
+            }
+        }
+
+        if (!empty(static::$twistPaths)) {
+            foreach (static::$twistPaths as $twistPath) {
+                require $twistPath;
             }
         }
     }
