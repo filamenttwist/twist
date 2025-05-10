@@ -128,11 +128,16 @@ class TwistClass
 
         if (Schema::hasTable($tableAddons)) {
             $addons = array_map(function ($pointer) {
-                return (new $pointer)->make();
+                if (class_exists($pointer))
+                    return (new $pointer)->make();
             }, DB::table($tableAddons)->whereJsonContains('panels', $panel)->where('is_active', true)->pluck('pointer')->toArray());
-        }
 
-        $this->addons = array_merge($this->addons, $addons);
+            $filteredAddons = array_filter($addons, function ($value) {
+                return $value !== null;
+            });
+
+            $this->addons = array_merge($this->addons, $filteredAddons);
+        }
 
         return $this->addons;
     }
