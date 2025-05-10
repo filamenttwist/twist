@@ -2,7 +2,6 @@
 
 namespace Obelaw\Twist\Classes;
 
-use Filament\Clusters\Cluster;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -36,6 +35,7 @@ class TwistClass
     private bool $disloadSetupAddons = false;
     private array $addons = [];
     private array $availableAddons = [];
+    private string|null $uploadDirectory  = null;
 
     public function make(): static
     {
@@ -306,6 +306,26 @@ class TwistClass
     public function disloadSetupAddons()
     {
         $this->disloadSetupAddons = true;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of uploadDirectory
+     */
+    public function getUploadDirectory()
+    {
+        return $this->uploadDirectory;
+    }
+
+    /**
+     * Set the value of uploadDirectory
+     *
+     * @return  self
+     */
+    public function setUploadDirectory($uploadDirectory)
+    {
+        $this->uploadDirectory = $uploadDirectory;
 
         return $this;
     }

@@ -10,6 +10,7 @@ use Filament\PanelProvider;
 use Filament\Support\Enums\MaxWidth;
 use Illuminate\Support\Str;
 use Obelaw\Twist\Classes\TwistClass;
+use Obelaw\Twist\Facades\Twist;
 
 class TwistPanelProvider extends PanelProvider
 {
@@ -53,6 +54,9 @@ class TwistPanelProvider extends PanelProvider
                     ->url('/' . $panel)
                     ->openUrlInNewTab();
             }, config('twist.panels')));
+
+        if ($this->twist->getUploadDirectory())
+            Twist::setUploadDirectory($this->twist->getUploadDirectory());
 
         return $panel
             ->id('obelaw-twist-' . $this->twist->getPath())
