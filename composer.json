@@ -15,7 +15,8 @@
     ],
     "require": {
         "laravel/framework": "^11.0",
-        "filament/filament": "^3.2"
+        "filament/filament": "^3.2",
+        "pharaonic/laravel-executor": "^1.2"
     },
     "extra": {
         "laravel": {

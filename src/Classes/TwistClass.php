@@ -12,8 +12,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Obelaw\Twist\Base\BaseAddon;
+use Obelaw\Twist\Contracts\HasDispatcher;
 use Obelaw\Twist\Contracts\HasRouteApi;
 use Obelaw\Twist\Models\Addon;
+use Pharaonic\Laravel\Executor\Facades\ExecutorPool;
 
 class TwistClass
 {
@@ -354,5 +356,31 @@ class TwistClass
         }
 
         return $apiRoutes;
+    }
+
+    public function loadDispatchers(): array
+    {
+        $addons = $this->loadSetupAddons();
+
+        $dispatchers = $this->loadDispatchersFromAddons($addons);
+
+        array_map(function ($dispatcher) {
+            ExecutorPool::addPath($dispatcher);
+        }, $dispatchers);
+
+        return $dispatchers;
+    }
+
+    public function loadDispatchersFromAddons(array $addons): array
+    {
+        $dispatchers = [];
+
+        foreach ($addons as $addon) {
+            if ($addon instanceof HasDispatcher) {
+                $dispatchers[] = $addon->pathDispatchers();
+            }
+        }
+
+        return $dispatchers;
     }
 }
