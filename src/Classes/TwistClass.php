@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Obelaw\Twist\Base\BaseAddon;
+use Obelaw\Twist\Contracts\HasRouteApi;
 use Obelaw\Twist\Models\Addon;
 
 class TwistClass
@@ -122,7 +123,7 @@ class TwistClass
         return $this;
     }
 
-    public function loadSetupAddons(string $panel): array
+    public function loadSetupAddons(string|null $panel = null): array
     {
         $tableAddons = (new Addon)->getTable();
 
@@ -130,7 +131,10 @@ class TwistClass
             $addons = array_map(function ($pointer) {
                 if (class_exists($pointer))
                     return (new $pointer)->make();
-            }, DB::table($tableAddons)->whereJsonContains('panels', $panel)->where('is_active', true)->pluck('pointer')->toArray());
+            }, DB::table($tableAddons)->where(function ($query) use ($panel) {
+                if ($panel)
+                    $query->whereJsonContains('panels', $panel);
+            })->where('is_active', true)->pluck('pointer')->toArray());
 
             $filteredAddons = array_filter($addons, function ($value) {
                 return $value !== null;
@@ -328,5 +332,27 @@ class TwistClass
         $this->uploadDirectory = $uploadDirectory;
 
         return $this;
+    }
+
+    public function getRoutesApi(): array
+    {
+        $addons = $this->loadSetupAddons();
+
+        $apiRoutes = $this->loadRoutesApiFromAddons($addons);
+
+        return $apiRoutes;
+    }
+
+    public function loadRoutesApiFromAddons(array $addons): array
+    {
+        $apiRoutes = [];
+
+        foreach ($addons as $addon) {
+            if ($addon instanceof HasRouteApi) {
+                $apiRoutes[] = $addon->pathRouteApi();
+            }
+        }
+
+        return $apiRoutes;
     }
 }
