@@ -35,6 +35,8 @@ class TwistServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        \Obelaw\Twist\Addons\AddonsPool::setPoolPath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'addons', \Obelaw\Twist\Addons\AddonsPool::LEVELONE);
+
         $this->loadViewsFrom(__DIR__ . '/../resources', 'obelaw-twist');
 
         if ($this->app->runningInConsole()) {

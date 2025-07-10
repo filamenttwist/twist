@@ -4,6 +4,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
+            "Obelaw\\": "addons/",
             "Obelaw\\Twist\\": "src/"
         }
     },
