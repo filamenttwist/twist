@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Obelaw\Twist\Classes\TwistClass;
 use Obelaw\Twist\Console\MigrateCommand;
 use Obelaw\Twist\Console\SetupAddonCommand;
+use Obelaw\Twist\Console\SetupClearCommand;
 use Obelaw\Twist\Console\SetupCommand;
 use Obelaw\Twist\Console\SetupDisableCommand;
 use Obelaw\Twist\Console\SetupEnableCommand;
@@ -49,6 +50,7 @@ class TwistServiceProvider extends ServiceProvider
             SetupAddonCommand::class,
             SetupEnableCommand::class,
             SetupDisableCommand::class,
+            SetupClearCommand::class,
             MigrateCommand::class,
         ]);
     }

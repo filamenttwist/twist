@@ -129,6 +129,8 @@ class TwistClass
     {
         $tableAddons = (new Addon)->getTable();
 
+        $loadAddons = [];
+
         if (Schema::hasTable($tableAddons)) {
             $addons = array_map(function ($pointer) {
                 if (class_exists($pointer))
@@ -142,10 +144,12 @@ class TwistClass
                 return $value !== null;
             });
 
-            $this->addons = array_merge($this->addons, $filteredAddons);
+            $loadAddons = array_merge($loadAddons, $filteredAddons);
         }
 
-        return $this->addons;
+        $this->addons = array_merge($this->addons, $loadAddons);
+
+        return $loadAddons;
     }
 
     /**
