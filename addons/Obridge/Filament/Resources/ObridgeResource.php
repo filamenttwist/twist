@@ -2,12 +2,12 @@
 
 namespace Obelaw\Obridge\Filament\Resources;
 
+use Filament\Schemas\Schema;
+use Filament\Actions\EditAction;
+use Filament\Actions\DeleteAction;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
@@ -45,12 +45,12 @@ class ObridgeResource extends Resource
     ];
 
     protected static ?string $model = Obridge::class;
-    protected static ?string $navigationIcon = 'heroicon-o-book-open';
-    protected static ?string $navigationGroup = 'Configuration';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-book-open';
+    protected static string | \UnitEnum | null $navigationGroup = 'Configuration';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 TextInput::make('name')
                     ->required()
@@ -63,7 +63,7 @@ class ObridgeResource extends Resource
                     ->maxLength(255)
                     ->password()
                     ->revealable()
-                    ->dehydrateStateUsing(fn ($state) => $state ?: \Obelaw\Obridge\Models\Obridge::generateSecret())
+                    ->dehydrateStateUsing(fn ($state) => $state ?: Obridge::generateSecret())
                     ->placeholder('Leave empty to auto-generate')
                     ->helperText('Authentication secret. Leave empty to auto-generate a secure secret')
                     ->hiddenOn('edit'),
@@ -114,7 +114,7 @@ class ObridgeResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->defaultSort('created_at', 'desc')
-            ->actions([
+            ->recordActions([
                 EditAction::make(),
                 DeleteAction::make(),
             ])

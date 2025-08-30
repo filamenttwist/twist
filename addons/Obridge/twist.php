@@ -1,8 +1,9 @@
 <?php
 
+use Obelaw\Twist\Addons\AddonRegistrar;
 use Obelaw\Obridge\ObridgeAddon;
 
-\Obelaw\Twist\Addons\AddonRegistrar::register(
+AddonRegistrar::register(
     'obelaw.twist.obridge',
     ObridgeAddon::class,
     config('obelaw.flow.panels')
