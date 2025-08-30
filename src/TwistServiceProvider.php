@@ -4,6 +4,7 @@ namespace Obelaw\Twist;
 
 use Illuminate\Support\ServiceProvider;
 use Obelaw\Twist\Classes\TwistClass;
+use Obelaw\Twist\Console\MakeCommand;
 use Obelaw\Twist\Console\MigrateCommand;
 use Obelaw\Twist\Console\SetupAddonCommand;
 use Obelaw\Twist\Console\SetupClearCommand;
@@ -54,6 +55,8 @@ class TwistServiceProvider extends ServiceProvider
             SetupDisableCommand::class,
             SetupClearCommand::class,
             MigrateCommand::class,
+            // make
+            MakeCommand::class,
         ]);
     }
 }

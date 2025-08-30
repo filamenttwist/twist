@@ -65,4 +65,9 @@ class AddonsPool
             }
         }
     }
+
+    public static function getPoolPaths(): array
+    {
+        return static::$poolPaths;
+    }
 }
