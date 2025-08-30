@@ -2,12 +2,13 @@
 
 namespace Obelaw\Twist\Support;
 
+use Exception;
+use Filament\Support\Enums\Width;
 use Filament\Facades\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Navigation\MenuItem;
 use Filament\Panel;
 use Filament\PanelProvider;
-use Filament\Support\Enums\MaxWidth;
 use Illuminate\Support\Str;
 use Obelaw\Twist\Classes\TwistClass;
 use Obelaw\Twist\Facades\Twist;
@@ -42,7 +43,7 @@ class TwistPanelProvider extends PanelProvider
             if (!$this->twist->getDisloadSetupAddons()) {
                 $this->twist->loadSetupAddons(panel: $this->twist->getPath());
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             //
         }
 
@@ -72,6 +73,6 @@ class TwistPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->maxContentWidth(MaxWidth::Full);
+            ->maxContentWidth(Width::Full);
     }
 }

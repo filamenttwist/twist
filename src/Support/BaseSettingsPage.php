@@ -14,7 +14,7 @@ abstract class BaseSettingsPage extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    protected static string $view = 'obelaw-twist::layout.settings';
+    protected string $view = 'obelaw-twist::layout.settings';
 
     /**
      * The header for save action.
