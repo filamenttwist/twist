@@ -12,6 +12,7 @@ use Obelaw\Twist\Console\SetupClearCommand;
 use Obelaw\Twist\Console\SetupCommand;
 use Obelaw\Twist\Console\SetupDisableCommand;
 use Obelaw\Twist\Console\SetupEnableCommand;
+use Obelaw\Twist\Console\Tenancy\TenancyMigrateCommand;
 use Obelaw\Twist\Support\TenancyManager;
 use Obelaw\Twist\Tenancy\Drivers\DriverFactory;
 
@@ -72,6 +73,9 @@ class TwistServiceProvider extends ServiceProvider
             MigrateCommand::class,
             // make
             MakeCommand::class,
+
+            //
+            TenancyMigrateCommand::class
         ]);
     }
 }

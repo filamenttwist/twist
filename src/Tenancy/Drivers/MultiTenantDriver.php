@@ -54,10 +54,9 @@ class MultiTenantDriver implements IsolationDriver
 
     public function migrate(TenantDTO $tenant, array $paths = []): void
     {
-        dd($paths);
-
         $this->boot($tenant);
-        $parameters = ['--database' => DB::getDefaultConnection(), '--force' => true];
+
+        $parameters = ['--database' => $this->tenantConnectionName, '--force' => true];
 
         if ($paths) {
             $parameters['--path'] = $paths; // multiple allowed
@@ -66,7 +65,8 @@ class MultiTenantDriver implements IsolationDriver
         Artisan::call('migrate', $parameters);
 
         $migrator = app('migrator');
-        $migrateFiles = $migrator->run($paths);
+        $migrator->setConnection($this->tenantConnectionName);
+        $migrator->run($paths, $parameters);
     }
 
     public function seed(TenantDTO $tenant, array $seeders = []): void
