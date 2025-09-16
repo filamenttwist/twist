@@ -14,19 +14,6 @@ use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Obelaw\Obridge\Filament\Resources\ObridgeResource\ListObridge;
 use Obelaw\Obridge\Models\Obridge;
-use Obelaw\Permit\Attributes\Permissions;
-use Obelaw\Permit\Traits\PremitCan;
-
-#[Permissions(
-    id: 'permit.accounting.account_types.viewAny',
-    title: 'Account Types',
-    description: 'Access on account types at accounting',
-    permissions: [
-        'permit.accounting.account_types.create' => 'Can Create',
-        'permit.accounting.account_types.edit' => 'Can Edit',
-        'permit.accounting.account_types.delete' => 'Can Delete',
-    ]
-)]
 /**
  * Represents a Price List resource for Filament.
  *
@@ -35,15 +22,6 @@ use Obelaw\Permit\Traits\PremitCan;
  */
 class ObridgeResource extends Resource
 {
-    use PremitCan;
-
-    protected static ?array $canAccess = [
-        'can_viewAny' => 'permit.accounting.account_types.viewAny',
-        'can_create' => 'permit.accounting.account_types.create',
-        'can_edit' => 'permit.accounting.account_types.edit',
-        'can_delete' => 'permit.accounting.account_types.delete',
-    ];
-
     protected static ?string $model = Obridge::class;
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-book-open';
     protected static string | \UnitEnum | null $navigationGroup = 'Configuration';
