@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Obelaw\Twist\Base\BaseAddon;
 use Obelaw\Twist\Contracts\HasDispatcher;
+use Obelaw\Twist\Contracts\HasHooks;
 use Obelaw\Twist\Contracts\HasRouteApi;
 use Obelaw\Twist\Models\Addon;
 use Pharaonic\Laravel\Executor\Facades\ExecutorPool;
@@ -386,5 +387,16 @@ class TwistClass
         }
 
         return $dispatchers;
+    }
+
+    public function loadHooks(): void
+    {
+        $addons = $this->loadSetupAddons();
+
+        foreach ($addons as $addon) {
+            if ($addon instanceof HasHooks) {
+                $addon->hooks();
+            }
+        }
     }
 }
