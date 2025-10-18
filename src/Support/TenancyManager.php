@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\Twist\Support;
+namespace Twist\Support;
 
-use Obelaw\Twist\Tenancy\Contracts\IsolationDriver;
-use Obelaw\Twist\Tenancy\Drivers\DriverFactory;
-use Obelaw\Twist\Tenancy\DTO\TenantDTO;
+use Twist\Tenancy\Contracts\IsolationDriver;
+use Twist\Tenancy\Drivers\DriverFactory;
+use Twist\Tenancy\DTO\TenantDTO;
 
 
 class TenancyManager

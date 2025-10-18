@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\Twist\Facades;
+namespace Twist\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Obelaw\Twist\Support\TenancyManager;
+use Twist\Support\TenancyManager;
 
 class Tenancy extends Facade
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Twist;
+namespace Twist;
 
 /**
  * Strand

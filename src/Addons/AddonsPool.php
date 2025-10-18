@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Twist\Addons;
+namespace Twist\Addons;
 
 class AddonsPool
 {

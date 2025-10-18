@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\Twist\Models;
+namespace Twist\Models;
 
 
-use Obelaw\Twist\Base\BaseModel;
+use Twist\Base\BaseModel;
 
 class Addon extends BaseModel
 {

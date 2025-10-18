@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\Twist\Tenancy\Drivers;
+namespace Twist\Tenancy\Drivers;
 
 use InvalidArgumentException;
-use Obelaw\Twist\Tenancy\Contracts\IsolationDriver;
+use Twist\Tenancy\Contracts\IsolationDriver;
 
 class DriverFactory
 {

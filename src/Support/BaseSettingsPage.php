@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Twist\Support;
+namespace Twist\Support;
 
 use Filament\Actions\Action;
 use Filament\Forms\Concerns\InteractsWithForms;

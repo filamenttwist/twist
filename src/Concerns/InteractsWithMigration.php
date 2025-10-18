@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Twist\Concerns;
+namespace Twist\Concerns;
 
 trait InteractsWithMigration
 {

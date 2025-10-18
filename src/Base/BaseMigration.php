@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\Twist\Base;
+namespace Twist\Base;
 
 use Illuminate\Database\Migrations\Migration;
-use Obelaw\Twist\Facades\Twist;
+use Twist\Facades\Twist;
 
 abstract class BaseMigration extends Migration
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Obelaw\Twist\Console;
+namespace Twist\Console;
 
 use Illuminate\Console\Command;
-use Obelaw\Twist\Addons\AddonsPool;
+use Twist\Addons\AddonsPool;
 
 final class MakeCommand extends Command
 {

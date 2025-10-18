@@ -5,7 +5,7 @@ return [
 
     // Isolation drivers mapping (name => class)
     'drivers' => [
-        'multi' => \Obelaw\Twist\Tenancy\Drivers\MultiTenantDriver::class,
+        'multi' => \Twist\Tenancy\Drivers\MultiTenantDriver::class,
     ],
 
     // Default driver name

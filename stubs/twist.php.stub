@@ -1,6 +1,6 @@
 <?php
 
-\Obelaw\Twist\Addons\AddonRegistrar::register(
+\Twist\Addons\AddonRegistrar::register(
     '{{ ID }}',
     {{ CLASS }},
 );

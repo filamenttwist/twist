@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\Twist\Base;
+namespace Twist\Base;
 
 use Illuminate\Database\Eloquent\Model;
-use Obelaw\Twist\Facades\Twist;
+use Twist\Facades\Twist;
 
 abstract class BaseModel extends Model
 {

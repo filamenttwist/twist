@@ -1,8 +1,8 @@
 <?php
 
-namespace Obelaw\Twist\Tenancy\Contracts;
+namespace Twist\Tenancy\Contracts;
 
-use Obelaw\Twist\Tenancy\DTO\TenantDTO;
+use Twist\Tenancy\DTO\TenantDTO;
 
 
 interface IsolationDriver

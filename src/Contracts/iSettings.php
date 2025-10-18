@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Twist\Contracts;
+namespace Twist\Contracts;
 
 interface iSettings
 {

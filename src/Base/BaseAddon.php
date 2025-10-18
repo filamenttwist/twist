@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Twist\Base;
+namespace Twist\Base;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;

@@ -1,13 +1,13 @@
 <?php
 
-namespace Obelaw\Twist\Tenancy\Drivers;
+namespace Twist\Tenancy\Drivers;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
-use Obelaw\Twist\Facades\Twist;
-use Obelaw\Twist\Tenancy\Contracts\IsolationDriver;
-use Obelaw\Twist\Tenancy\DTO\TenantDTO;
+use Twist\Facades\Twist;
+use Twist\Tenancy\Contracts\IsolationDriver;
+use Twist\Tenancy\DTO\TenantDTO;
 
 /**
  * Simple database-per-tenant driver.

@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Twist\Facades;
+namespace Twist\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

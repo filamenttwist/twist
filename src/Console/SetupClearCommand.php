@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Obelaw\Twist\Console;
+namespace Twist\Console;
 
 use function Laravel\Prompts\confirm;
 use Illuminate\Console\Command;
-use Obelaw\Twist\Models\Addon;
+use Twist\Models\Addon;
 
 final class SetupClearCommand extends Command
 {

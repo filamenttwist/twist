@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Twist\Classes;
+namespace Twist\Classes;
 
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -11,11 +11,11 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Obelaw\Twist\Base\BaseAddon;
-use Obelaw\Twist\Contracts\HasDispatcher;
-use Obelaw\Twist\Contracts\HasHooks;
-use Obelaw\Twist\Contracts\HasRouteApi;
-use Obelaw\Twist\Models\Addon;
+use Twist\Base\BaseAddon;
+use Twist\Contracts\HasDispatcher;
+use Twist\Contracts\HasHooks;
+use Twist\Contracts\HasRouteApi;
+use Twist\Models\Addon;
 use Pharaonic\Laravel\Executor\Facades\ExecutorPool;
 
 class TwistClass

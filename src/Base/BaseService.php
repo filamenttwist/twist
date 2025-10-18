@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Twist\Base;
+namespace Twist\Base;
 
 use Illuminate\Support\Traits\Macroable;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Twist\Support;
+namespace Twist\Support;
 
 use Exception;
 use Filament\Support\Enums\Width;
@@ -10,8 +10,8 @@ use Filament\Navigation\MenuItem;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Illuminate\Support\Str;
-use Obelaw\Twist\Classes\TwistClass;
-use Obelaw\Twist\Facades\Twist;
+use Twist\Classes\TwistClass;
+use Twist\Facades\Twist;
 
 class TwistPanelProvider extends PanelProvider
 {

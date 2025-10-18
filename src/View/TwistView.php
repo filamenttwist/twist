@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Twist\View;
+namespace Twist\View;
 
 use Closure;
 

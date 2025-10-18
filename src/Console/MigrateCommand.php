@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Obelaw\Twist\Console;
+namespace Twist\Console;
 
 use Illuminate\Console\Command;
-use Obelaw\Twist\Contracts\HasMigration;
-use Obelaw\Twist\Facades\Twist;
+use Twist\Contracts\HasMigration;
+use Twist\Facades\Twist;
 
 final class MigrateCommand extends Command
 {

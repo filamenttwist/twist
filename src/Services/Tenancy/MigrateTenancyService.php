@@ -1,13 +1,13 @@
 <?php
 
-namespace Obelaw\Twist\Services\Tenancy;
+namespace Twist\Services\Tenancy;
 
-use Obelaw\Twist\Base\BaseService;
+use Twist\Base\BaseService;
 use Illuminate\Support\Facades\DB;
-use Obelaw\Twist\Contracts\HasMigration;
-use Obelaw\Twist\Facades\Tenancy;
-use Obelaw\Twist\Facades\Twist;
-use Obelaw\Twist\Tenancy\DTO\TenantDTO;
+use Twist\Contracts\HasMigration;
+use Twist\Facades\Tenancy;
+use Twist\Facades\Twist;
+use Twist\Tenancy\DTO\TenantDTO;
 
 class MigrateTenancyService extends BaseService
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Twist\Tenancy\DTO;
+namespace Twist\Tenancy\DTO;
 
 /**
  * Minimal Tenant model placeholder.

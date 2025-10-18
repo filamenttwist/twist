@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Twist\Tenancy\Concerns;
+namespace Twist\Tenancy\Concerns;
 
 use Filament\Panel;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Obelaw\Twist\Addons;
+namespace Twist\Addons;
 
-use Obelaw\Twist\Facades\Twist;
+use Twist\Facades\Twist;
 
 class AddonRegistrar
 {

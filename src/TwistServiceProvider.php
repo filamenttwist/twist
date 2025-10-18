@@ -1,20 +1,19 @@
 <?php
 
-namespace Obelaw\Twist;
+namespace Twist;
 
 use Illuminate\Support\ServiceProvider;
-use Obelaw\Twist\Addons\AddonsPool;
-use Obelaw\Twist\Classes\TwistClass;
-use Obelaw\Twist\Console\MakeCommand;
-use Obelaw\Twist\Console\MigrateCommand;
-use Obelaw\Twist\Console\SetupAddonCommand;
-use Obelaw\Twist\Console\SetupClearCommand;
-use Obelaw\Twist\Console\SetupCommand;
-use Obelaw\Twist\Console\SetupDisableCommand;
-use Obelaw\Twist\Console\SetupEnableCommand;
-use Obelaw\Twist\Console\Tenancy\TenancyMigrateCommand;
-use Obelaw\Twist\Support\TenancyManager;
-use Obelaw\Twist\Tenancy\Drivers\DriverFactory;
+use Twist\Classes\TwistClass;
+use Twist\Console\MakeCommand;
+use Twist\Console\MigrateCommand;
+use Twist\Console\SetupAddonCommand;
+use Twist\Console\SetupClearCommand;
+use Twist\Console\SetupCommand;
+use Twist\Console\SetupDisableCommand;
+use Twist\Console\SetupEnableCommand;
+use Twist\Console\Tenancy\TenancyMigrateCommand;
+use Twist\Support\TenancyManager;
+use Twist\Tenancy\Drivers\DriverFactory;
 
 class TwistServiceProvider extends ServiceProvider
 {

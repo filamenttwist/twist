@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Obelaw\Twist\Console;
+namespace Twist\Console;
 
 use Illuminate\Console\Command;
-use Obelaw\Twist\Addons\AddonRegistrar;
-use Obelaw\Twist\Addons\AddonsPool;
-use Obelaw\Twist\Models\Addon;
+use Twist\Addons\AddonRegistrar;
+use Twist\Addons\AddonsPool;
+use Twist\Models\Addon;
 
 final class SetupCommand extends Command
 {

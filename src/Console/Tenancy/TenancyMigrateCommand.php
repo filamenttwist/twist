@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Obelaw\Twist\Console\Tenancy;
+namespace Twist\Console\Tenancy;
 
 use App\Models\Tenant;
 use Illuminate\Console\Command;
-use Obelaw\Twist\Services\Tenancy\MigrateTenancyService;
+use Twist\Services\Tenancy\MigrateTenancyService;
 
 
 final class TenancyMigrateCommand extends Command
